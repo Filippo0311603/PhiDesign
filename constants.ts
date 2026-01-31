@@ -48,7 +48,7 @@ export const PORTFOLIO_DATA = [
     id: 1,
     title: 'Termoidraulica Vema',
     category: 'Sviluppo Web',
-    image: '/projects/mockup.webp',
+    image: '/projects/mockup4.webp',
     gallery: [
       '/projects/mockup.webp',
       '/projects/mockup2.webp',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { Button } from './Button';
 
 interface ContactProps {
@@ -51,17 +51,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
                 </div>
                 <div>
                   <h4 className="text-white font-medium">Email</h4>
-                  <p className="text-slate-400">info@phidesign.it</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-fuchsia-400 border border-slate-700">
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <h4 className="text-white font-medium">Telefono</h4>
-                  <p className="text-slate-400">+39 123 456 7890</p>
+                  <p className="text-slate-400">info.phidesignweb@gmail.com</p>
                 </div>
               </div>
 
@@ -70,8 +60,8 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-medium">Studio</h4>
-                  <p className="text-slate-400">Milano, Italia (Remoto disponibile)</p>
+                  <h4 className="text-white font-medium">Location</h4>
+                  <p className="text-slate-400">Roma, Italia</p>
                 </div>
               </div>
             </div>
