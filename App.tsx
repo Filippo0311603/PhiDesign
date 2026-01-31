@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { Portfolio } from './components/Portfolio';
 import { Contact } from './components/Contact';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
+import { CookiePolicy } from './components/CookiePolicy';
 import { Instagram } from 'lucide-react';
 
 const App: React.FC = () => {
+  const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showCookie, setShowCookie] = useState(false);
+
   return (
     <div className="bg-slate-900 min-h-screen text-slate-200 selection:bg-cyan-500/30 selection:text-cyan-200">
       <Navbar />
@@ -107,13 +112,30 @@ const App: React.FC = () => {
               <p className="text-slate-500 text-sm">
                 © {new Date().getFullYear()} Phi Design. Tutti i diritti riservati.
               </p>
-              <p className="text-slate-600 text-xs">
-                Realizzato con <span className="text-red-500">♥</span> e tanto caffè ☕
-              </p>
+              <div className="flex items-center gap-6">
+                <button
+                  onClick={() => setShowPrivacy(true)}
+                  className="text-slate-500 hover:text-cyan-400 text-sm transition-colors"
+                >
+                  Privacy Policy
+                </button>
+                <button
+                  onClick={() => setShowCookie(true)}
+                  className="text-slate-500 hover:text-cyan-400 text-sm transition-colors"
+                >
+                  Cookie Policy
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Privacy Policy Modal */}
+      {showPrivacy && <PrivacyPolicy onClose={() => setShowPrivacy(false)} />}
+      
+      {/* Cookie Policy Modal */}
+      {showCookie && <CookiePolicy onClose={() => setShowCookie(false)} />}
     </div>
   );
 };

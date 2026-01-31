@@ -6,17 +6,20 @@ export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    privacy: false
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const target = e.target as HTMLInputElement;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Grazie! Il messaggio è stato inviato (simulazione).');
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: '', email: '', message: '', privacy: false });
   };
 
   return (
@@ -112,6 +115,31 @@ export const Contact: React.FC = () => {
                   required
                 ></textarea>
               </div>
+              
+              {/* GDPR Checkbox */}
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  name="privacy"
+                  checked={formData.privacy}
+                  onChange={handleChange}
+                  required
+                  className="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-800 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-slate-900 cursor-pointer"
+                />
+                <label htmlFor="privacy" className="text-sm text-slate-400 leading-relaxed cursor-pointer">
+                  Dichiaro di aver letto e accettato la{' '}
+                  <button
+                    type="button"
+                    onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+                    className="text-cyan-400 hover:text-cyan-300 underline"
+                  >
+                    Privacy Policy
+                  </button>
+                  {' '}e autorizzo il trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).
+                </label>
+              </div>
+
               <Button type="submit" className="w-full">
                 Invia Messaggio <Send size={18} />
               </Button>
