@@ -6,7 +6,7 @@ export const IMAGES = {
   LOGO: '/logo-optimized.webp', 
   
   // Placeholder for the Developer at Desk (User's second image)
-  HERO: '/herosection.webp'
+  HERO: '/hero.webp'
 };
 
 export const NAVIGATION_LINKS = [
