@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
         <img 
           src={IMAGES.HERO} 
           alt="Phi Design - Web Developer al lavoro" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top sm:object-center"
           width="1920"
           height="1080"
           loading="eager"
