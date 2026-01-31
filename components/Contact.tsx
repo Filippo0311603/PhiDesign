@@ -67,8 +67,8 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
               Compila il form o contattami direttamente.
             </p>
 
-            <div className="space-y-6 inline-flex flex-col items-center lg:items-start">
-              <div className="flex items-center gap-4">
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 justify-center lg:justify-start">
                 <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700">
                   <Mail size={20} />
                 </div>
@@ -78,7 +78,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 justify-center lg:justify-start">
                 <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700">
                   <MapPin size={20} />
                 </div>
