@@ -55,26 +55,26 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           
           {/* Text & Info */}
-          <div>
-            <h2 className="text-4xl font-bold text-white mb-6">
+          <div className="text-center lg:text-left">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Iniziamo un <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">Progetto</span>
             </h2>
-            <p className="text-slate-400 mb-10 text-lg">
+            <p className="text-slate-400 mb-10 text-base sm:text-lg">
               Hai un'idea in mente o hai bisogno di rinnovare il tuo sito web? 
               Compila il form o contattami direttamente.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-6 inline-flex flex-col items-center lg:items-start">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700">
                   <Mail size={20} />
                 </div>
-                <div>
+                <div className="text-left">
                   <h4 className="text-white font-medium">Email</h4>
-                  <p className="text-slate-400">info.phidesignweb@gmail.com</p>
+                  <p className="text-slate-400 text-sm sm:text-base">info.phidesignweb@gmail.com</p>
                 </div>
               </div>
 
@@ -82,7 +82,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
                 <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700">
                   <MapPin size={20} />
                 </div>
-                <div>
+                <div className="text-left">
                   <h4 className="text-white font-medium">Location</h4>
                   <p className="text-slate-400">Roma, Italia</p>
                 </div>

@@ -27,26 +27,26 @@ export const Hero: React.FC = () => {
 
       {/* Content */}
       <div className="container relative z-10 px-6 pt-20">
-        <div className="max-w-3xl">
-          <div className="flex items-center gap-2 mb-6 animate-pulse">
+        <div className="max-w-3xl mx-auto md:mx-0 text-center md:text-left">
+          <div className="flex items-center gap-2 mb-6 animate-pulse justify-center md:justify-start">
             <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs font-bold border border-cyan-500/30 uppercase tracking-widest flex items-center gap-2">
               <Code2 size={14} /> Web Development Studio
             </span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight neon-text">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 leading-tight neon-text">
             Dal design <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">
               al successo online
             </span>
           </h1>
           
-          <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
+          <p className="text-base sm:text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-xl mx-auto md:mx-0">
             Siti web che non passano inosservati. Unisco creatività e strategia per dare 
             alla tua attività la presenza digitale che merita.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <Button onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
               Vedi i miei lavori
             </Button>

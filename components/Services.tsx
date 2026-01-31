@@ -24,13 +24,13 @@ export const Services: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {SERVICES_DATA.map((service) => (
             <div 
               key={service.id} 
-              className="group glass-panel p-8 rounded-2xl hover:bg-slate-800/80 transition-all duration-300 border border-slate-700 hover:border-cyan-500/50 hover:-translate-y-2"
+              className="group glass-panel p-6 md:p-8 rounded-2xl hover:bg-slate-800/80 transition-all duration-300 border border-slate-700 hover:border-cyan-500/50 hover:-translate-y-2 text-center sm:text-left"
             >
-              <div className="w-16 h-16 rounded-xl bg-slate-800 flex items-center justify-center text-cyan-400 mb-6 group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-fuchsia-500 group-hover:text-white transition-all duration-300">
+              <div className="w-16 h-16 rounded-xl bg-slate-800 flex items-center justify-center text-cyan-400 mb-6 group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-fuchsia-500 group-hover:text-white transition-all duration-300 mx-auto sm:mx-0">
                 {iconMap[service.icon]}
               </div>
               <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
