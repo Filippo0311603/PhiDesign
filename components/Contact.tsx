@@ -68,17 +68,17 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
             </p>
 
             <div className="flex flex-col items-center lg:items-start space-y-6">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 w-full max-w-[320px]">
                 <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0">
                   <Mail size={20} />
                 </div>
                 <div className="text-left">
                   <h4 className="text-white font-medium">Email</h4>
-                  <p className="text-slate-400 text-sm sm:text-base">info.phidesignweb@gmail.com</p>
+                  <p className="text-slate-400 text-sm sm:text-base break-all">info.phidesignweb@gmail.com</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 w-full max-w-[320px]">
                 <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0">
                   <MapPin size={20} />
                 </div>

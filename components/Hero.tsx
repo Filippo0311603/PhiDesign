@@ -57,8 +57,8 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      {/* Scroll Indicator - hidden on mobile */}
+      <div className="hidden sm:block absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-slate-500 rounded-full flex justify-center p-1">
           <div className="w-1 h-2 bg-cyan-400 rounded-full"></div>
         </div>
