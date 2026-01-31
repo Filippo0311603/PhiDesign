@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <Hero />
         <Services />
         <Portfolio />
-        <Contact />
+        <Contact onOpenPrivacy={() => setShowPrivacy(true)} />
       </main>
 
       <footer className="bg-slate-950 border-t border-slate-800">

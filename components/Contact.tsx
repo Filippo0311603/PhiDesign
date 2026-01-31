@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Button } from './Button';
 
-export const Contact: React.FC = () => {
+interface ContactProps {
+  onOpenPrivacy?: () => void;
+}
+
+export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -131,7 +135,7 @@ export const Contact: React.FC = () => {
                   Dichiaro di aver letto e accettato la{' '}
                   <button
                     type="button"
-                    onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
+                    onClick={onOpenPrivacy}
                     className="text-cyan-400 hover:text-cyan-300 underline"
                   >
                     Privacy Policy

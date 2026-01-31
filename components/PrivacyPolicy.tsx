@@ -111,7 +111,17 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onClose }) => {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-4">8. Diritti dell'interessato</h2>
+            <h2 className="text-xl font-semibold text-white mb-4">8. Trasferimento dati extra-UE</h2>
+            <p className="text-slate-300 leading-relaxed">
+              Alcuni dei servizi terzi utilizzati (Vercel Inc.) hanno sede negli Stati Uniti d'America.
+            </p>
+            <p className="text-slate-300 leading-relaxed mt-3">
+              Il trasferimento dei dati verso paesi extra-UE avviene sulla base delle Clausole Contrattuali Standard (SCC) approvate dalla Commissione Europea, che garantiscono un livello di protezione adeguato dei dati personali.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-white mb-4">9. Diritti dell'interessato</h2>
             <p className="text-slate-300 leading-relaxed">
               Ai sensi del Regolamento UE 2016/679 (GDPR), l'utente ha il diritto di:
             </p>
@@ -126,7 +136,7 @@ export const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onClose }) => {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-4">9. Modifiche alla presente Privacy Policy</h2>
+            <h2 className="text-xl font-semibold text-white mb-4">10. Modifiche alla presente Privacy Policy</h2>
             <p className="text-slate-300 leading-relaxed">
               Il Titolare si riserva il diritto di modificare la presente informativa in qualsiasi momento. Le modifiche saranno pubblicate su questa pagina.
             </p>

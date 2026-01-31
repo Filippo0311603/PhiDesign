@@ -55,16 +55,6 @@ export const CookiePolicy: React.FC<CookiePolicyProps> = ({ onClose }) => {
             
             <div className="mt-6 space-y-4">
               <div className="bg-slate-800/50 rounded-lg p-5 border border-slate-700">
-                <h3 className="text-white font-semibold mb-2">Google Fonts</h3>
-                <p className="text-slate-300 text-sm">
-                  Il sito utilizza font forniti da Google Fonts, un servizio di Google LLC, che consente la visualizzazione corretta dei caratteri tipografici.
-                </p>
-                <p className="text-slate-400 text-sm mt-2">
-                  L'utilizzo di Google Fonts può comportare la trasmissione dell'indirizzo IP dell'utente ai server di Google.
-                </p>
-              </div>
-
-              <div className="bg-slate-800/50 rounded-lg p-5 border border-slate-700">
                 <h3 className="text-white font-semibold mb-2">CDN e servizi tecnici</h3>
                 <p className="text-slate-300 text-sm">Il sito utilizza:</p>
                 <ul className="list-disc list-inside text-slate-400 text-sm mt-2 space-y-1">
@@ -73,6 +63,9 @@ export const CookiePolicy: React.FC<CookiePolicyProps> = ({ onClose }) => {
                 </ul>
                 <p className="text-slate-400 text-sm mt-2">
                   Tali servizi possono utilizzare cookie tecnici necessari al loro funzionamento.
+                </p>
+                <p className="text-slate-400 text-sm mt-2">
+                  Vercel Inc. ha sede negli Stati Uniti. Il trasferimento dei dati avviene sulla base delle Clausole Contrattuali Standard (SCC) approvate dalla Commissione Europea.
                 </p>
               </div>
             </div>
