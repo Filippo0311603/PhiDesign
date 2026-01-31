@@ -29,6 +29,8 @@ export const Navbar: React.FC = () => {
               src={IMAGES.LOGO} 
               alt="Phi Design Logo" 
               className="w-full h-full object-cover"
+              width="40"
+              height="40"
             />
           </div>
           <span className="text-xl font-bold tracking-wider text-white">
@@ -56,6 +58,8 @@ export const Navbar: React.FC = () => {
         <button 
           className="md:hidden text-white"
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Chiudi menu' : 'Apri menu'}
+          aria-expanded={isOpen}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

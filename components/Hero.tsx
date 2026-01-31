@@ -15,8 +15,11 @@ export const Hero: React.FC = () => {
         */}
         <img 
           src={IMAGES.HERO} 
-          alt="Developer at work" 
+          alt="Phi Design - Web Developer al lavoro" 
           className="w-full h-full object-cover"
+          width="1920"
+          height="1080"
+          loading="eager"
         />
         {/* Gradient Overlay to ensure text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/40"></div>
@@ -32,15 +35,15 @@ export const Hero: React.FC = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight neon-text">
-            Sviluppo il <br />
+            Dal design <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">
-              Futuro Digitale
+              al successo online
             </span>
           </h1>
           
           <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed max-w-xl">
-            Creo siti web performanti, moderni e su misura che trasformano i visitatori in clienti. 
-            Design accattivante incontra codice pulito.
+            Siti web che non passano inosservati. Unisco creatività e strategia per dare 
+            alla tua attività la presenza digitale che merita.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">

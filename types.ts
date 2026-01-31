@@ -12,6 +12,17 @@ export interface Project {
   image: string;
 }
 
+export interface PortfolioItem {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  gallery?: string[];
+  description?: string;
+  technologies?: string[];
+  link?: string;
+}
+
 export interface SocialLink {
   name: string;
   url: string;

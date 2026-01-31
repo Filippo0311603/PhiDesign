@@ -2,9 +2,45 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.PNG" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Phi Design | Web Development</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Phi Design | Realizzazione Siti Web Professionali</title>
+    <meta name="description" content="Phi Design - Creo siti web professionali, moderni e su misura per la tua attività. Web design, sviluppo e SEO. Trasforma la tua presenza online oggi." />
+    <meta name="keywords" content="web design, sviluppo siti web, realizzazione siti web, siti web professionali, web developer, Italia" />
+    <meta name="author" content="Phi Design" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://phidesign.it/" />
+    <meta property="og:title" content="Phi Design | Realizzazione Siti Web Professionali" />
+    <meta property="og:description" content="Creo siti web professionali, moderni e su misura per la tua attività. Trasforma la tua presenza online oggi." />
+    <meta property="og:image" content="/logo.PNG" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://phidesign.it/" />
+    <meta name="twitter:title" content="Phi Design | Realizzazione Siti Web Professionali" />
+    <meta name="twitter:description" content="Creo siti web professionali, moderni e su misura per la tua attività. Trasforma la tua presenza online oggi." />
+    <meta name="twitter:image" content="/logo.PNG" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://phidesign.it/" />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0f172a" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+    
+    <!-- Font loading non-blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"></noscript>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -12,9 +48,9 @@
           extend: {
             colors: {
               phi: {
-                dark: '#0f172a', // Slate 900
-                cyan: '#06b6d4', // Cyan 500
-                pink: '#d946ef', // Fuchsia 500
+                dark: '#0f172a',
+                cyan: '#06b6d4',
+                pink: '#d946ef',
               }
             },
             fontFamily: {
@@ -24,7 +60,6 @@
         }
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -41,18 +76,9 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
-  }
-}
-</script>
-</head>
+  </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

@@ -3,10 +3,10 @@
 // Example: '/assets/logo.png' if you put the file in a public/assets folder.
 export const IMAGES = {
   // Placeholder for the "Phi Design" logo (User's first image)
-  LOGO: 'https://images.unsplash.com/photo-1635348729202-a1167d7667f7?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3', 
+  LOGO: '/logo-optimized.webp', 
   
   // Placeholder for the Developer at Desk (User's second image)
-  HERO: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3'
+  HERO: '/herosection.webp'
 };
 
 export const NAVIGATION_LINKS = [
@@ -46,20 +46,43 @@ export const SERVICES_DATA = [
 export const PORTFOLIO_DATA = [
   {
     id: 1,
-    title: 'E-Commerce Fashion',
+    title: 'Termoidraulica Vema',
     category: 'Sviluppo Web',
-    image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop'
+    image: '/projects/mockup.webp',
+    gallery: [
+      '/projects/mockup.webp',
+      '/projects/mockup2.webp',
+      '/projects/mockup3.webp',
+      '/projects/mockup4.webp',
+      '/projects/mockup5.webp',
+      '/projects/mockup6.webp',
+      '/projects/mockup7.webp'
+    ],
+    description: 'Sito web professionale per azienda di termoidraulica con presentazione servizi e contatti.',
+    technologies: ['React', 'Tailwind CSS'],
+    link: 'https://www.termoidraulicavema.com/',
+    comingSoon: false
   },
   {
     id: 2,
-    title: 'App Finanziaria Dashboard',
-    category: 'UI/UX Design',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop'
+    title: 'Nuovo Progetto',
+    category: 'Artista Musicale',
+    image: '',
+    gallery: [],
+    description: '',
+    technologies: [],
+    link: '',
+    comingSoon: true
   },
   {
     id: 3,
-    title: 'Sito Corporate Tech',
-    category: 'Full Stack',
-    image: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop'
+    title: 'Nuovo Progetto',
+    category: 'Macelleria',
+    image: '',
+    gallery: [],
+    description: '',
+    technologies: [],
+    link: '',
+    comingSoon: true
   }
 ];
