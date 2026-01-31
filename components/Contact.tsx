@@ -13,6 +13,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
     message: '',
     privacy: false
   });
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const target = e.target as HTMLInputElement;
@@ -20,10 +21,32 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
     setFormData({ ...formData, [e.target.name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert('Grazie! Il messaggio è stato inviato (simulazione).');
-    setFormData({ name: '', email: '', message: '', privacy: false });
+    setStatus('sending');
+    
+    try {
+      const response = await fetch('https://formspree.io/f/xwvbdolz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', message: '', privacy: false });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
@@ -134,8 +157,24 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
                 </label>
               </div>
 
-              <Button type="submit" className="w-full">
-                Invia Messaggio <Send size={18} />
+              {/* Status Messages */}
+              {status === 'success' && (
+                <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-green-400 text-sm">
+                  ✓ Messaggio inviato con successo! Ti risponderò al più presto.
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
+                  ✗ Si è verificato un errore. Riprova o contattami direttamente via email.
+                </div>
+              )}
+
+              <Button type="submit" className="w-full" disabled={status === 'sending'}>
+                {status === 'sending' ? (
+                  <>Invio in corso...</>
+                ) : (
+                  <>Invia Messaggio <Send size={18} /></>
+                )}
               </Button>
             </form>
           </div>
