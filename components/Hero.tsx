@@ -5,7 +5,7 @@ import { IMAGES } from '../constants';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative w-full min-h-[70vh] sm:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         {/* 
@@ -16,7 +16,7 @@ export const Hero: React.FC = () => {
         <img 
           src={IMAGES.HERO} 
           alt="Phi Design - Web Developer al lavoro" 
-          className="w-full h-full object-cover object-top sm:object-center"
+          className="w-full h-full object-cover object-center"
           width="1920"
           height="1080"
           loading="eager"
