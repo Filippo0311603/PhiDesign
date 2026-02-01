@@ -67,7 +67,7 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full glass-panel border-t border-slate-700 animate-in slide-in-from-top-5 fade-in duration-300">
+        <div className="md:hidden absolute top-full left-0 w-full bg-slate-900 border-t border-slate-700 shadow-2xl">
           <div className="flex flex-col p-6 gap-4">
             {NAVIGATION_LINKS.map((link) => (
               <a 
