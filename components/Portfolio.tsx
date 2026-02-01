@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
-import { ExternalLink, X, ChevronLeft, ChevronRight, Clock } from 'lucide-react';
+import { ExternalLink, X, ChevronLeft, ChevronRight, Clock, Maximize2, Minimize2 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../constants';
 
 export const Portfolio: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<typeof PORTFOLIO_DATA[0] | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const openModal = (project: typeof PORTFOLIO_DATA[0]) => {
     if (project.comingSoon) return; // Non aprire modal per coming soon
     setSelectedProject(project);
     setCurrentImageIndex(0);
+    setIsFullscreen(false);
     document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setSelectedProject(null);
+    setIsFullscreen(false);
     document.body.style.overflow = 'unset';
   };
 
@@ -28,6 +31,10 @@ export const Portfolio: React.FC = () => {
     if (selectedProject?.gallery) {
       setCurrentImageIndex((prev) => (prev - 1 + selectedProject.gallery.length) % selectedProject.gallery.length);
     }
+  };
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen);
   };
 
   const images = selectedProject?.gallery?.length ? selectedProject.gallery : (selectedProject ? [selectedProject.image] : []);
@@ -93,7 +100,7 @@ export const Portfolio: React.FC = () => {
       </div>
 
       {/* MODAL */}
-      {selectedProject && (
+      {selectedProject && !isFullscreen && (
         <div 
           className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
           onClick={closeModal}
@@ -116,11 +123,21 @@ export const Portfolio: React.FC = () => {
               <img 
                 src={images[currentImageIndex]} 
                 alt={`${selectedProject.title} - Immagine ${currentImageIndex + 1}`}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain cursor-pointer"
                 width="800"
                 height="450"
                 loading="lazy"
+                onClick={toggleFullscreen}
               />
+              
+              {/* Fullscreen Button */}
+              <button 
+                onClick={toggleFullscreen}
+                className="absolute top-4 left-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                aria-label="Schermo intero"
+              >
+                <Maximize2 size={20} />
+              </button>
               
               {/* Navigation Arrows */}
               {images.length > 1 && (
@@ -193,6 +210,56 @@ export const Portfolio: React.FC = () => {
               )}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* FULLSCREEN LIGHTBOX */}
+      {selectedProject && isFullscreen && (
+        <div 
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black"
+          onClick={toggleFullscreen}
+        >
+          {/* Close Fullscreen Button */}
+          <button 
+            onClick={toggleFullscreen}
+            className="absolute top-4 right-4 z-10 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            aria-label="Esci da schermo intero"
+          >
+            <Minimize2 size={24} />
+          </button>
+
+          {/* Fullscreen Image */}
+          <img 
+            src={images[currentImageIndex]} 
+            alt={`${selectedProject.title} - Immagine ${currentImageIndex + 1}`}
+            className="max-w-full max-h-full object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+          
+          {/* Navigation Arrows */}
+          {images.length > 1 && (
+            <>
+              <button 
+                onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                aria-label="Immagine precedente"
+              >
+                <ChevronLeft size={32} />
+              </button>
+              <button 
+                onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                aria-label="Immagine successiva"
+              >
+                <ChevronRight size={32} />
+              </button>
+              
+              {/* Image Counter */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-white/10 text-white text-sm">
+                {currentImageIndex + 1} / {images.length}
+              </div>
+            </>
+          )}
         </div>
       )}
     </section>
