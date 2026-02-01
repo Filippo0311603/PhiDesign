@@ -58,7 +58,7 @@ export const PORTFOLIO_DATA = [
       '/projects/mockup6.webp',
       '/projects/mockup7.webp'
     ],
-    description: 'Sito web professionale per azienda di termoidraulica con presentazione servizi e contatti.',
+    description: 'Nuovo progetto online per Termoidraulica Ve.Ma! 🚀 Per questo progetto l\'obiettivo era chiaro: trasformare un sito lento e obsoleto in una piattaforma moderna capace di convertire i visitatori in clienti.',
     technologies: ['React', 'Tailwind CSS'],
     link: 'https://www.termoidraulicavema.com/',
     comingSoon: false
