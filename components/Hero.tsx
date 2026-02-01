@@ -46,12 +46,12 @@ export const Hero: React.FC = () => {
             alla tua attività la presenza digitale che merita.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-row flex-wrap gap-3 sm:gap-4">
             <Button onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
               Vedi i miei lavori
             </Button>
             <Button variant="outline" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-              Contattami <ArrowRight size={18} />
+              Contattami <ArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
             </Button>
           </div>
         </div>
