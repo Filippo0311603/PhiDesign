@@ -15,7 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   type = 'button'
 }) => {
-  const baseStyle = "px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base";
+  const baseStyle = "px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 text-sm sm:text-base";
   
   const variants = {
     primary: "bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white shadow-lg hover:shadow-cyan-500/50",

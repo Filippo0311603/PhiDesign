@@ -26,7 +26,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Content */}
-      <div className="container relative z-10 px-6 pt-20">
+      <div className="container relative z-10 px-6 pt-20 pb-16 sm:pb-0">
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 mb-6 animate-pulse">
             <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs font-bold border border-cyan-500/30 uppercase tracking-widest flex items-center gap-2">
