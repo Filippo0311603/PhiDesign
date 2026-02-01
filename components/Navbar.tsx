@@ -77,8 +77,16 @@ export const Navbar: React.FC = () => {
       {/* Mobile Menu Fullscreen */}
       {isOpen && (
         <div className="md:hidden fixed inset-0 z-[55] bg-slate-900 flex flex-col">
-          {/* Header spacer */}
-          <div className="h-20"></div>
+          {/* Header con X */}
+          <div className="h-20 flex items-center justify-end px-6">
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="text-white p-2"
+              aria-label="Chiudi menu"
+            >
+              <X size={28} />
+            </button>
+          </div>
           
           {/* Navigation Links */}
           <div className="flex-1 flex flex-col items-center justify-center gap-6 px-6">
