@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
         <div className="max-w-3xl">
           <div className="flex items-center gap-2 mb-6 animate-pulse">
             <span className="bg-cyan-500/20 text-cyan-300 px-3 py-1 rounded-full text-xs font-bold border border-cyan-500/30 uppercase tracking-widest flex items-center gap-2">
-              <Code2 size={14} /> Web Development Studio
+              <Code2 size={14} /> Web Developer
             </span>
           </div>
           
