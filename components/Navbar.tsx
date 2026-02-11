@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Instagram, Mail, MapPin } from 'lucide-react';
 import { NAVIGATION_LINKS, IMAGES } from '../constants';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,13 +27,42 @@ export const Navbar: React.FC = () => {
     };
   }, [isOpen]);
 
+  // Smooth scroll con transizione
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    
+    if (element) {
+      // Chiudi il menu mobile se aperto
+      setIsOpen(false);
+      
+      // Scroll smooth con offset per la navbar
+      const offsetTop = element.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <>
       <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'glass-panel py-3 shadow-2xl' : 'bg-transparent py-6'}`}>
         <div className="container mx-auto px-6 flex justify-between items-center">
           {/* Logo Section */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-cyan-500 group-hover:border-fuchsia-500 transition-colors">
+          <motion.a 
+            href="#" 
+            className="flex items-center gap-3 group"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <motion.div 
+              className="relative w-10 h-10 overflow-hidden rounded-full border-2 border-cyan-500 group-hover:border-fuchsia-500 transition-colors"
+              whileHover={{ rotateY: 180 }}
+              transition={{ duration: 0.6 }}
+              style={{ transformStyle: 'preserve-3d' }}
+            >
               <img 
                 src={IMAGES.LOGO} 
                 alt="Phi Design Logo" 
@@ -40,26 +70,37 @@ export const Navbar: React.FC = () => {
                 width="40"
                 height="40"
               />
-            </div>
+            </motion.div>
             <span className="text-xl font-bold tracking-wider text-white">
               PHI <span className="text-cyan-400">DESIGN</span>
             </span>
-          </a>
+          </motion.a>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
-            {NAVIGATION_LINKS.map((link) => (
-              <a 
+            {NAVIGATION_LINKS.map((link, index) => (
+              <motion.a 
                 key={link.name} 
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-sm font-medium text-slate-300 hover:text-cyan-400 transition-colors uppercase tracking-widest relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-cyan-500 after:to-fuchsia-500 after:transition-all hover:after:w-full"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -2 }}
               >
                 {link.name}
-              </a>
+              </motion.a>
             ))}
-            <a href="#contact" className="px-5 py-2 rounded-full border border-fuchsia-500 text-fuchsia-400 hover:bg-fuchsia-500 hover:text-white transition-all text-sm font-bold">
+            <motion.a 
+              href="#contact" 
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="px-5 py-2 rounded-full border border-fuchsia-500 text-fuchsia-400 hover:bg-fuchsia-500 hover:text-white transition-all text-sm font-bold"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(217, 70, 239, 0.5)" }}
+              whileTap={{ scale: 0.95 }}
+            >
               Prenota
-            </a>
+            </motion.a>
           </div>
 
           {/* Mobile Toggle */}
@@ -75,8 +116,15 @@ export const Navbar: React.FC = () => {
       </nav>
 
       {/* Mobile Menu Fullscreen */}
-      {isOpen && (
-        <div className="md:hidden fixed inset-0 z-[55] bg-slate-900 flex flex-col">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            className="md:hidden fixed inset-0 z-[55] bg-slate-900 flex flex-col"
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
           {/* Header con X */}
           <div className="h-20 flex items-center justify-end px-6">
             <button 
@@ -90,23 +138,34 @@ export const Navbar: React.FC = () => {
           
           {/* Navigation Links */}
           <div className="flex-1 flex flex-col items-center justify-center gap-6 px-6">
-            {NAVIGATION_LINKS.map((link) => (
-              <a 
+            {NAVIGATION_LINKS.map((link, index) => (
+              <motion.a 
                 key={link.name}
                 href={link.href}
                 className="text-2xl font-bold text-white hover:text-cyan-400 transition-colors uppercase tracking-widest"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => handleNavClick(e, link.href)}
+                initial={{ opacity: 0, x: 50, rotateY: -45 }}
+                animate={{ opacity: 1, x: 0, rotateY: 0 }}
+                transition={{ delay: 0.1 + index * 0.1, type: "spring", stiffness: 260, damping: 20 }}
+                whileHover={{ scale: 1.1, color: "#22d3ee" }}
+                whileTap={{ scale: 0.95 }}
+                style={{ transformStyle: 'preserve-3d' }}
               >
                 {link.name}
-              </a>
+              </motion.a>
             ))}
-            <a 
+            <motion.a 
               href="#contact" 
               className="mt-4 px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white font-bold text-lg"
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleNavClick(e, '#contact')}
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 260, damping: 20 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(6, 182, 212, 0.6)" }}
+              whileTap={{ scale: 0.95 }}
             >
               Prenota una Call
-            </a>
+            </motion.a>
           </div>
 
           {/* Footer Section */}
@@ -141,8 +200,9 @@ export const Navbar: React.FC = () => {
               © 2026 Phi Design. Tutti i diritti riservati.
             </p>
           </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

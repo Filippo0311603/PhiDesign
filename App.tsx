@@ -6,7 +6,9 @@ import { Portfolio } from './components/Portfolio';
 import { Contact } from './components/Contact';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { CookiePolicy } from './components/CookiePolicy';
+import { SectionTransition } from './components/SectionTransition';
 import { Instagram } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const App: React.FC = () => {
   const [showPrivacy, setShowPrivacy] = useState(false);
@@ -36,15 +38,18 @@ const App: React.FC = () => {
               </p>
               {/* Social */}
               <div className="flex items-center gap-4 mt-6 justify-center md:justify-start">
-                <a 
+                <motion.a 
                   href="https://www.instagram.com/phidesign__/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 hover:text-white transition-all duration-300"
                   aria-label="Seguici su Instagram"
+                  whileHover={{ scale: 1.2, rotate: 360 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
                 >
                   <Instagram size={18} />
-                </a>
+                </motion.a>
               </div>
             </div>
 
@@ -53,28 +58,48 @@ const App: React.FC = () => {
               <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-sm">Navigazione</h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#home" className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group">
+                  <motion.a 
+                    href="#home" 
+                    className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
                     <span className="w-0 h-[1px] bg-cyan-400 group-hover:w-4 transition-all duration-300"></span>
                     Home
-                  </a>
+                  </motion.a>
                 </li>
                 <li>
-                  <a href="#services" className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group">
+                  <motion.a 
+                    href="#services" 
+                    className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
                     <span className="w-0 h-[1px] bg-cyan-400 group-hover:w-4 transition-all duration-300"></span>
                     Servizi
-                  </a>
+                  </motion.a>
                 </li>
                 <li>
-                  <a href="#portfolio" className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group">
+                  <motion.a 
+                    href="#portfolio" 
+                    className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
                     <span className="w-0 h-[1px] bg-cyan-400 group-hover:w-4 transition-all duration-300"></span>
                     Portfolio
-                  </a>
+                  </motion.a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group">
+                  <motion.a 
+                    href="#contact" 
+                    className="text-slate-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2 group"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
                     <span className="w-0 h-[1px] bg-cyan-400 group-hover:w-4 transition-all duration-300"></span>
                     Contatti
-                  </a>
+                  </motion.a>
                 </li>
               </ul>
             </div>

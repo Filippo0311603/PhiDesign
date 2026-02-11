@@ -6,10 +6,21 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #0f172a;
   color: #f8fafc;
+  perspective: 1000px;
 }
 
 .neon-text {
   text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(217, 70, 239, 0.3);
+  animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+  from {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(217, 70, 239, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.8), 0 0 30px rgba(217, 70, 239, 0.6), 0 0 40px rgba(6, 182, 212, 0.4);
+  }
 }
 
 .glass-panel {
@@ -17,4 +28,60 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.glass-panel:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(6, 182, 212, 0.4);
+  border-color: rgba(6, 182, 212, 0.6);
+}
+
+/* Animazioni 3D per le card */
+@keyframes float-3d {
+  0%, 100% {
+    transform: translateY(0) rotateX(0) rotateY(0);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+  }
+}
+
+.float-3d {
+  animation: float-3d 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+/* Effetti di profondità per hover */
+.depth-hover {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.depth-hover:hover {
+  transform: translateZ(30px) scale(1.05);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(6, 182, 212, 0.3);
+}
+
+/* Scroll smooth con perspective */
+* {
+  scroll-behavior: smooth;
+}
+
+/* Animazione gradiente fluida */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;

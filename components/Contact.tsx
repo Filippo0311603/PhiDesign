@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Send } from 'lucide-react';
 import { Button } from './Button';
+import { motion, useInView } from 'framer-motion';
 
 interface ContactProps {
   onOpenPrivacy?: () => void;
@@ -49,49 +50,114 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
     }
   };
 
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section id="contact" className="py-24 bg-slate-900 relative overflow-hidden">
+    <section id="contact" className="py-24 bg-slate-900 relative overflow-hidden" ref={ref}>
+      {/* Sliding panel reveal */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 z-10"
+        initial={{ y: 0 }}
+        animate={isInView ? { y: "100%" } : { y: 0 }}
+        transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
+      />
+      
       {/* Glow Effects */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <motion.div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"
+        animate={{ 
+          scale: [1, 1.3, 1],
+          opacity: [0.3, 0.5, 0.3]
+        }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      ></motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           
           {/* Text & Info */}
-          <div className="text-center lg:text-left">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+          <motion.div 
+            className="text-center lg:text-left"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.h2 
+              className="text-3xl sm:text-4xl font-bold text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Iniziamo un <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">Progetto</span>
-            </h2>
-            <p className="text-slate-400 mb-10 text-base sm:text-lg">
+            </motion.h2>
+            <motion.p 
+              className="text-slate-400 mb-10 text-base sm:text-lg"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
               Hai un'idea in mente o hai bisogno di rinnovare il tuo sito web? 
               Compila il form o contattami direttamente.
-            </p>
+            </motion.p>
 
             <div className="flex flex-col items-center lg:items-start space-y-6">
-              <div className="flex items-center gap-4 w-full max-w-[320px]">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0">
+              <motion.div 
+                className="flex items-center gap-4 w-full max-w-[320px]"
+                initial={{ opacity: 0, x: -50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                whileHover={{ scale: 1.1, x: 10 }}
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                <motion.div 
+                  className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0"
+                  whileHover={{ rotate: 360, scale: 1.2 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <Mail size={20} />
-                </div>
+                </motion.div>
                 <div className="text-left">
                   <h4 className="text-white font-medium">Email</h4>
                   <p className="text-slate-400 text-sm sm:text-base break-all">info.phidesignweb@gmail.com</p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex items-center gap-4 w-full max-w-[320px]">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0">
+              <motion.div 
+                className="flex items-center gap-4 w-full max-w-[320px]"
+                initial={{ opacity: 0, x: -50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                whileHover={{ scale: 1.1, x: 10 }}
+                style={{ transformStyle: 'preserve-3d' }}
+              >
+                <motion.div 
+                  className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0"
+                  whileHover={{ rotate: 360, scale: 1.2 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <MapPin size={20} />
-                </div>
+                </motion.div>
                 <div className="text-left">
                   <h4 className="text-white font-medium">Location</h4>
                   <p className="text-slate-400">Roma, Italia</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Form */}
-          <div className="glass-panel p-8 rounded-2xl border border-slate-700">
+          <motion.div 
+            className="glass-panel p-8 rounded-2xl border border-slate-700"
+            initial={{ opacity: 0, x: 50, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            whileHover={{ 
+              y: -10,
+              boxShadow: "0 30px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(6, 182, 212, 0.4)"
+            }}
+            style={{ transformStyle: 'preserve-3d' }}
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Nome</label>
@@ -177,7 +243,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
                 )}
               </Button>
             </form>
-          </div>
+          </motion.div>
 
         </div>
       </div>
