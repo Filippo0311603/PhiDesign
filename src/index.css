@@ -2,16 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #0f172a;
-  color: #f8fafc;
-  perspective: 1000px;
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #050b14; /* Darker background for cyber effect */
+    color: #f8fafc;
+    perspective: 1000px;
+    overflow-x: hidden;
+  }
+
+  /* Lenis smooth scrolling requirement */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
 }
 
-.neon-text {
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(217, 70, 239, 0.3);
-  animation: neon-pulse 2s ease-in-out infinite alternate;
+@layer utilities {
+  .neon-text {
+    text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(217, 70, 239, 0.3), 0 0 40px rgba(6, 182, 212, 0.2);
+    animation: neon-pulse 3s ease-in-out infinite alternate;
+  }
+
+  .neon-box {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.3), inset 0 0 15px rgba(217, 70, 239, 0.2);
+    border: 1px solid rgba(6, 182, 212, 0.5);
+  }
+
+  .glass-panel {
+    background: rgba(10, 15, 30, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .glass-panel:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.7),
+      0 0 40px rgba(6, 182, 212, 0.4);
+    border-color: rgba(6, 182, 212, 0.8);
+  }
+
+  .cyber-gradient-bg {
+    background: radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.15) 0%, rgba(217, 70, 239, 0.05) 50%, rgba(5, 11, 20, 1) 100%);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
 }
 
 @keyframes neon-pulse {
@@ -19,34 +71,13 @@ body {
     text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 20px rgba(217, 70, 239, 0.3);
   }
   to {
-    text-shadow: 0 0 20px rgba(6, 182, 212, 0.8), 0 0 30px rgba(217, 70, 239, 0.6), 0 0 40px rgba(6, 182, 212, 0.4);
+    text-shadow: 0 0 20px rgba(6, 182, 212, 0.9), 0 0 30px rgba(217, 70, 239, 0.7), 0 0 50px rgba(6, 182, 212, 0.5);
   }
 }
 
-.glass-panel {
-  background: rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-panel:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 
-    0 25px 50px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(6, 182, 212, 0.4);
-  border-color: rgba(6, 182, 212, 0.6);
-}
-
-/* Animazioni 3D per le card */
 @keyframes float-3d {
-  0%, 100% {
-    transform: translateY(0) rotateX(0) rotateY(0);
-  }
-  50% {
-    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
-  }
+  0%, 100% { transform: translateY(0) rotateX(0) rotateY(0); }
+  50% { transform: translateY(-15px) rotateX(3deg) rotateY(3deg); }
 }
 
 .float-3d {
@@ -54,34 +85,39 @@ body {
   transform-style: preserve-3d;
 }
 
-/* Effetti di profondità per hover */
 .depth-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   transform-style: preserve-3d;
 }
 
 .depth-hover:hover {
-  transform: translateZ(30px) scale(1.05);
+  transform: translateZ(40px) scale(1.05);
   box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(6, 182, 212, 0.3);
+    0 30px 60px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(217, 70, 239, 0.4);
 }
 
-/* Scroll smooth con perspective */
-* {
-  scroll-behavior: smooth;
-}
-
-/* Animazione gradiente fluida */
 @keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .animated-gradient {
   background-size: 200% 200%;
   animation: gradient-shift 8s ease infinite;
+}
+
+/* Custom Scrollbar for cyber feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050b14;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(6, 182, 212, 0.5);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(6, 182, 212, 0.8);
+}

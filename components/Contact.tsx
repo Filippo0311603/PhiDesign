@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Send } from 'lucide-react';
-import { Button } from './Button';
+import { Mail, MapPin, Send, Zap, Activity } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 
 interface ContactProps {
@@ -54,196 +53,227 @@ export const Contact: React.FC<ContactProps> = ({ onOpenPrivacy }) => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="contact" className="py-24 bg-slate-900 relative overflow-hidden" ref={ref}>
-      {/* Sliding panel reveal */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 z-10"
-        initial={{ y: 0 }}
-        animate={isInView ? { y: "100%" } : { y: 0 }}
-        transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-      />
+    <section id="contact" className="py-32 bg-[#050b14] relative overflow-hidden" ref={ref}>
       
-      {/* Glow Effects */}
+      {/* Decorative Blur Orbs */}
       <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"
-        animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.3, 0.5, 0.3]
-        }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-0 w-[600px] h-[600px] bg-fuchsia-600/10 rounded-full blur-[120px] pointer-events-none"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+      ></motion.div>
+      <motion.div 
+        className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-cyan-600/10 rounded-full blur-[150px] pointer-events-none"
+        animate={{ scale: [1, 1.3, 1], opacity: [0.2, 0.4, 0.2] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       ></motion.div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          
-          {/* Text & Info */}
-          <motion.div 
-            className="text-center lg:text-left"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.h2 
-              className="text-3xl sm:text-4xl font-bold text-white mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Iniziamo un <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500">Progetto</span>
-            </motion.h2>
-            <motion.p 
-              className="text-slate-400 mb-10 text-base sm:text-lg"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        
+        {/* Intestazione Sezione */}
+        <motion.div 
+          className="mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-end gap-10"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="max-w-3xl">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white mb-6 uppercase tracking-wider">
+              Iniziamo un <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-fuchsia-500 neon-text">Progetto</span>
+            </h2>
+            <p className="text-slate-400 mb-6 text-base md:text-xl max-w-xl font-light">
               Hai un'idea in mente o hai bisogno di rinnovare il tuo sito web? 
               Compila il form o contattami direttamente.
-            </motion.p>
+            </p>
+          </div>
+        </motion.div>
 
-            <div className="flex flex-col items-center lg:items-start space-y-6">
-              <motion.div 
-                className="flex items-center gap-4 w-full max-w-[320px]"
-                initial={{ opacity: 0, x: -50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                whileHover={{ scale: 1.1, x: 10 }}
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <motion.div 
-                  className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0"
-                  whileHover={{ rotate: 360, scale: 1.2 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Mail size={20} />
-                </motion.div>
-                <div className="text-left">
-                  <h4 className="text-white font-medium">Email</h4>
-                  <p className="text-slate-400 text-sm sm:text-base break-all">info.phidesignweb@gmail.com</p>
-                </div>
-              </motion.div>
-
-              <motion.div 
-                className="flex items-center gap-4 w-full max-w-[320px]"
-                initial={{ opacity: 0, x: -50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                whileHover={{ scale: 1.1, x: 10 }}
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <motion.div 
-                  className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-cyan-400 border border-slate-700 flex-shrink-0"
-                  whileHover={{ rotate: 360, scale: 1.2 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <MapPin size={20} />
-                </motion.div>
-                <div className="text-left">
-                  <h4 className="text-white font-medium">Location</h4>
-                  <p className="text-slate-400">Roma, Italia</p>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-
-          {/* Form */}
+        {/* CYBER-BENTO GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-7xl mx-auto">
+          
+          {/* MAIN FORM BENTO (8 Columns) */}
           <motion.div 
-            className="glass-panel p-8 rounded-2xl border border-slate-700"
-            initial={{ opacity: 0, x: 50, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: 50, scale: 0.9 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            whileHover={{ 
-              y: -10,
-              boxShadow: "0 30px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(6, 182, 212, 0.4)"
-            }}
-            style={{ transformStyle: 'preserve-3d' }}
+            className="lg:col-span-8 bg-[#0a1220]/60 backdrop-blur-2xl border border-slate-800 hover:border-slate-700 rounded-3xl p-8 md:p-12 relative overflow-hidden transition-colors duration-500 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Nome</label>
-                <input 
-                  type="text" 
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full bg-slate-950/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
-                  placeholder="Mario Rossi"
-                  required
-                />
+            {/* Top Bar Decorative */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-fuchsia-500 opacity-50"></div>
+            
+            <div className="flex items-center gap-3 mb-10 text-slate-400 font-mono text-sm uppercase tracking-widest border-b border-slate-800 pb-6">
+              <Activity size={18} className="text-cyan-400 animate-pulse" />
+              <span>Pannello Input Dati</span>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-8">
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Floating Label Input: Nome */}
+                <div className="relative z-0 w-full group">
+                  <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="block py-4 px-0 w-full text-xl md:text-2xl font-bold text-white bg-transparent border-0 border-b-2 border-slate-700 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-400 peer transition-colors duration-300" 
+                    placeholder=" " 
+                    required 
+                    autoComplete="off"
+                  />
+                  <label 
+                    htmlFor="name" 
+                    className="absolute text-slate-500 duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-cyan-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8 font-bold uppercase tracking-widest text-sm"
+                  >
+                    Nome
+                  </label>
+                </div>
+
+                {/* Floating Label Input: Email */}
+                <div className="relative z-0 w-full group">
+                  <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="block py-4 px-0 w-full text-xl md:text-2xl font-bold text-white bg-transparent border-0 border-b-2 border-slate-700 appearance-none focus:outline-none focus:ring-0 focus:border-fuchsia-400 peer transition-colors duration-300" 
+                    placeholder=" " 
+                    required 
+                    autoComplete="off"
+                  />
+                  <label 
+                    htmlFor="email" 
+                    className="absolute text-slate-500 duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-fuchsia-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8 font-bold uppercase tracking-widest text-sm"
+                  >
+                    Indirizzo Email
+                  </label>
+                </div>
               </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">Email</label>
-                <input 
-                  type="email" 
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full bg-slate-950/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors"
-                  placeholder="mario@email.com"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">Messaggio</label>
+
+              {/* Floating Label Textarea: Messaggio */}
+              <div className="relative z-0 w-full group mt-12">
                 <textarea 
-                  id="message"
-                  name="message"
+                  name="message" 
+                  id="message" 
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full bg-slate-950/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition-colors resize-none"
-                  placeholder="Parlami del tuo progetto..."
-                  required
+                  className="block py-4 px-0 w-full text-xl md:text-2xl font-medium text-white bg-transparent border-0 border-b-2 border-slate-700 appearance-none focus:outline-none focus:ring-0 focus:border-cyan-400 peer transition-colors duration-300 resize-none" 
+                  placeholder=" " 
+                  required 
                 ></textarea>
-              </div>
-              
-              {/* GDPR Checkbox */}
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  id="privacy"
-                  name="privacy"
-                  checked={formData.privacy}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 w-4 h-4 rounded border-slate-600 bg-slate-800 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-slate-900 cursor-pointer"
-                />
-                <label htmlFor="privacy" className="text-sm text-slate-400 leading-relaxed cursor-pointer">
-                  Dichiaro di aver letto e accettato la{' '}
-                  <button
-                    type="button"
-                    onClick={onOpenPrivacy}
-                    className="text-cyan-400 hover:text-cyan-300 underline"
-                  >
-                    Privacy Policy
-                  </button>
-                  {' '}e autorizzo il trattamento dei miei dati personali ai sensi del Regolamento UE 2016/679 (GDPR).
+                <label 
+                  htmlFor="message" 
+                  className="absolute text-slate-500 duration-300 transform -translate-y-6 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-cyan-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8 font-bold uppercase tracking-widest text-sm"
+                >
+                  Parlami del tuo progetto...
                 </label>
+              </div>
+
+              {/* GDPR & Status */}
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-6">
+                
+                <div className="flex items-start gap-4">
+                  <div className="relative mt-0.5">
+                    <input
+                      type="checkbox"
+                      id="privacy"
+                      name="privacy"
+                      checked={formData.privacy}
+                      onChange={handleChange}
+                      required
+                      className="w-5 h-5 appearance-none rounded border-2 border-slate-700 checked:border-cyan-500 checked:bg-cyan-500 transition-colors cursor-pointer"
+                    />
+                    <div className="absolute inset-0 pointer-events-none flex items-center justify-center text-[#050b14] opacity-0 peer-checked:opacity-100">
+                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                  </div>
+                  <label htmlFor="privacy" className="text-sm text-slate-400 font-light cursor-pointer select-none">
+                    Accetto i protocolli di <button type="button" onClick={onOpenPrivacy} className="text-cyan-400 font-bold hover:underline">Privacy Policy (GDPR)</button>.
+                  </label>
+                </div>
+
+                {/* Submit Button */}
+                <button 
+                  type="submit" 
+                  disabled={status === 'sending'}
+                  className="w-full md:w-auto relative group overflow-hidden rounded-xl bg-white text-slate-900 px-8 py-4 font-black uppercase tracking-widest hover:text-white hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all duration-300"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-fuchsia-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    {status === 'sending' ? 'Trasmissione...' : 'Invia Dati'}
+                    {!status && <Send size={18} />}
+                    {status === 'idle' && <Send size={18} />}
+                  </span>
+                </button>
+
               </div>
 
               {/* Status Messages */}
               {status === 'success' && (
-                <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-green-400 text-sm">
-                  ✓ Messaggio inviato con successo! Ti risponderò al più presto.
+                <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4 text-green-400 font-bold font-mono text-sm uppercase tracking-wider text-center">
+                  ✓ Trasmissione completata con successo.
                 </div>
               )}
               {status === 'error' && (
-                <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
-                  ✗ Si è verificato un errore. Riprova o contattami direttamente via email.
+                <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-red-400 font-bold font-mono text-sm uppercase tracking-wider text-center">
+                  ✗ Errore di trasmissione. Riprovare.
                 </div>
               )}
 
-              <Button type="submit" className="w-full" disabled={status === 'sending'}>
-                {status === 'sending' ? (
-                  <>Invio in corso...</>
-                ) : (
-                  <>Invia Messaggio <Send size={18} /></>
-                )}
-              </Button>
             </form>
           </motion.div>
+
+          {/* SATELLITE BENTOS (4 Columns) */}
+          <div className="lg:col-span-4 flex flex-col gap-6 lg:gap-8">
+            
+            {/* EMAIL BENTO */}
+            <motion.div 
+              className="flex-1 bg-[#0a1220]/60 backdrop-blur-2xl border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:border-fuchsia-500/50 transition-colors duration-500 shadow-[0_0_30px_rgba(0,0,0,0.3)] flex flex-col justify-end"
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="absolute top-8 right-8 w-16 h-16 bg-fuchsia-500/10 rounded-2xl border border-fuchsia-500/20 flex items-center justify-center text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500 group-hover:text-white transition-all duration-500 transform group-hover:-rotate-12">
+                <Mail size={32} />
+              </div>
+              <div className="relative z-10 mt-16">
+                <p className="text-slate-500 font-mono text-xs uppercase tracking-[0.2em] mb-2">Scrivimi</p>
+                <h4 className="text-white font-bold text-lg md:text-xl break-words group-hover:text-fuchsia-400 transition-colors duration-300">
+                  info.phidesignweb@gmail.com
+                </h4>
+              </div>
+            </motion.div>
+
+            {/* LOCATION BENTO (RADAR) */}
+            <motion.div 
+              className="flex-1 bg-[#0a1220]/60 backdrop-blur-2xl border border-slate-800 rounded-3xl p-8 relative overflow-hidden group hover:border-cyan-500/50 transition-colors duration-500 shadow-[0_0_30px_rgba(0,0,0,0.3)] flex flex-col justify-end min-h-[200px]"
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {/* Radar Background CSS Animation */}
+              <div className="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-cyan-500 rounded-full"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] border border-cyan-500/50 rounded-full"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100px] h-[100px] border border-cyan-500/30 rounded-full"></div>
+                <div className="absolute top-1/2 left-1/2 w-[150px] h-[1px] bg-cyan-400 origin-left animate-[spin_4s_linear_infinite]"></div>
+              </div>
+
+              <div className="absolute top-8 right-8 w-16 h-16 bg-cyan-500/10 rounded-2xl border border-cyan-500/20 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-white transition-all duration-500 transform group-hover:rotate-12 z-10">
+                <MapPin size={32} />
+              </div>
+              
+              <div className="relative z-10 mt-16">
+                <p className="text-slate-500 font-mono text-xs uppercase tracking-[0.2em] mb-2">Dove mi trovi</p>
+                <h4 className="text-white font-bold text-2xl md:text-3xl group-hover:text-cyan-400 transition-colors duration-300">
+                  Roma, IT
+                </h4>
+              </div>
+            </motion.div>
+
+          </div>
 
         </div>
       </div>
